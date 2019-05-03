@@ -11,8 +11,9 @@ router.post("/webhooks", async function (req, res) {
     let { previous_attributes, object } = data
 
     try {
-        if ('status' in previous_attributes &&
-            previous_attributes.status === 'active'
+        if ('status' in previous_attributes
+            && type === 'customer.subscription.updated'
+            && previous_attributes.status === 'active'
             && object.status === 'past_due') {
             console.log("subscription payment has failed! Subscription id: ", object.id)
 
