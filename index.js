@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 const stripe = require('stripe')('sk_test_5wRrRkW71NRhb4cIHdRL9Z32');
+const router = require("./router")
 const app = express();
 
 app.get('/', (req, res) => {
@@ -21,8 +22,6 @@ app.use(bodyParser());
 
 app.engine('html', nunjucks.render);
 nunjucks.configure('views', { noCache: true });
-
-const router = express.Router();
 
 app.use('/', router)
 
